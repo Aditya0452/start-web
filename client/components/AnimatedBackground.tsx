@@ -71,13 +71,13 @@ export default function AnimatedBackground({
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       if (variant === "floating-shapes") {
-        drawFloatingShapes(ctx, canvas);
+        drawFloatingShapes(ctx, canvas, shapesRef.current);
       } else if (variant === "particles") {
-        drawParticles(ctx, canvas);
+        drawParticles(ctx, canvas, shapesRef.current);
       } else if (variant === "waves") {
         drawWaves(ctx, canvas);
       } else if (variant === "geometric") {
-        drawGeometric(ctx, canvas);
+        drawGeometric(ctx, canvas, shapesRef.current);
       }
 
       animationRef.current = requestAnimationFrame(animate);
@@ -104,8 +104,7 @@ export default function AnimatedBackground({
   );
 }
 
-function drawFloatingShapes(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
-  const shapes = shapesRef.current;
+function drawFloatingShapes(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement, shapes: Shape[]) {
   const time = Date.now() * 0.001;
 
   shapes.forEach((shape) => {
@@ -150,8 +149,7 @@ function drawFloatingShapes(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasEle
   });
 }
 
-function drawParticles(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
-  const shapes = shapesRef.current;
+function drawParticles(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement, shapes: Shape[]) {
   const time = Date.now() * 0.002;
 
   shapes.forEach((shape, index) => {
@@ -236,8 +234,7 @@ function drawWaves(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
   }
 }
 
-function drawGeometric(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
-  const shapes = shapesRef.current;
+function drawGeometric(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement, shapes: Shape[]) {
   
   shapes.forEach((shape) => {
     shape.x += shape.vx;
