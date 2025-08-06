@@ -172,4 +172,17 @@
   .dark .text-gray-500 {
     @apply text-gray-400;
   }
+
+  /* Dark mode card improvements */
+  .dark [data-card] {
+    @apply bg-gray-800 border-gray-700;
+  }
+
+  .dark .shadow-lg {
+    @apply shadow-gray-900/25;
+  }
+
+  .dark .hover\:shadow-xl:hover {
+    @apply shadow-gray-900/40;
+  }
 }
