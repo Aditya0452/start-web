@@ -121,14 +121,14 @@ export default function Index() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
                 Why Choose Qulas?
               </h2>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                 We combine technical expertise with industry insights to deliver solutions that not only meet your current needs but also prepare you for future challenges.
               </p>
               
@@ -138,8 +138,8 @@ export default function Index() {
                     <span className="text-white font-bold text-sm">1</span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Innovation-First Approach</h3>
-                    <p className="text-gray-600">We leverage the latest technologies and methodologies to ensure your projects stay ahead of the curve.</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Innovation-First Approach</h3>
+                    <p className="text-gray-600 dark:text-gray-300">We leverage the latest technologies and methodologies to ensure your projects stay ahead of the curve.</p>
                   </div>
                 </div>
                 
@@ -148,8 +148,8 @@ export default function Index() {
                     <span className="text-white font-bold text-sm">2</span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">End-to-End Solutions</h3>
-                    <p className="text-gray-600">From concept to deployment, we handle every aspect of your project with meticulous attention to detail.</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">End-to-End Solutions</h3>
+                    <p className="text-gray-600 dark:text-gray-300">From concept to deployment, we handle every aspect of your project with meticulous attention to detail.</p>
                   </div>
                 </div>
                 
@@ -158,8 +158,8 @@ export default function Index() {
                     <span className="text-white font-bold text-sm">3</span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Proven Track Record</h3>
-                    <p className="text-gray-600">Our diverse portfolio and satisfied clients speak to our commitment to excellence and results.</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Proven Track Record</h3>
+                    <p className="text-gray-600 dark:text-gray-300">Our diverse portfolio and satisfied clients speak to our commitment to excellence and results.</p>
                   </div>
                 </div>
               </div>
