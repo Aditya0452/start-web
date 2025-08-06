@@ -56,11 +56,18 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex">
-            <Button className="bg-gradient-to-r from-qulas-blue to-qulas-purple hover:from-qulas-blue-dark hover:to-qulas-purple-dark text-white">
-              Get Started
-            </Button>
+          {/* Auth Buttons */}
+          <div className="hidden md:flex items-center space-x-3">
+            <Link to="/login">
+              <Button variant="ghost" className="text-gray-700 hover:text-qulas-blue">
+                Sign In
+              </Button>
+            </Link>
+            <Link to="/signup">
+              <Button className="bg-gradient-to-r from-qulas-blue to-qulas-purple hover:from-qulas-blue-dark hover:to-qulas-purple-dark text-white">
+                Get Started
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -113,9 +120,18 @@ export default function Navigation() {
               >
                 Contact
               </Link>
-              <Button className="bg-gradient-to-r from-qulas-blue to-qulas-purple hover:from-qulas-blue-dark hover:to-qulas-purple-dark text-white w-full mt-4">
-                Get Started
-              </Button>
+              <div className="flex flex-col space-y-2 mt-4">
+                <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                  <Button variant="outline" className="w-full">
+                    Sign In
+                  </Button>
+                </Link>
+                <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
+                  <Button className="bg-gradient-to-r from-qulas-blue to-qulas-purple hover:from-qulas-blue-dark hover:to-qulas-purple-dark text-white w-full">
+                    Get Started
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         )}
