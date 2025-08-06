@@ -6,6 +6,18 @@ interface AbstractBackgroundProps {
   className?: string;
 }
 
+interface Particle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  size: number;
+  opacity: number;
+  color: string;
+  angle: number;
+  angleSpeed: number;
+}
+
 export default function AbstractBackground({ 
   variant = "particles", 
   intensity = "medium",
@@ -13,7 +25,7 @@ export default function AbstractBackground({
 }: AbstractBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
-  const particlesRef = useRef<any[]>([]);
+  const particlesRef = useRef<Particle[]>([]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -51,11 +63,11 @@ export default function AbstractBackground({
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       if (variant === "particles") {
-        drawParticles(ctx, canvas);
+        drawParticles(ctx, canvas, particlesRef.current);
       } else if (variant === "waves") {
         drawWaves(ctx, canvas);
       } else if (variant === "geometric") {
-        drawGeometric(ctx, canvas);
+        drawGeometric(ctx, canvas, particlesRef.current);
       } else if (variant === "dots") {
         drawDots(ctx, canvas);
       }
@@ -84,8 +96,7 @@ export default function AbstractBackground({
   );
 }
 
-function drawParticles(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
-  const particles = particlesRef.current;
+function drawParticles(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement, particles: Particle[]) {
   const time = Date.now() * 0.001;
 
   particles.forEach((particle, index) => {
@@ -156,9 +167,8 @@ function drawWaves(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
   }
 }
 
-function drawGeometric(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
+function drawGeometric(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement, shapes: Particle[]) {
   const time = Date.now() * 0.001;
-  const shapes = particlesRef.current;
 
   shapes.forEach((shape, index) => {
     shape.x += shape.vx;
