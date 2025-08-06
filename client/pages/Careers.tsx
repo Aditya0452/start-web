@@ -187,7 +187,7 @@ export default function Careers() {
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-qulas-blue via-purple-600 to-qulas-purple text-white py-20 overflow-hidden">
-          <CursorEffects variant="abstract" isDark={true} />
+          <CursorEffects variant="abstract" isDark={false} />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" style={{ zIndex: 2 }}>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Join Our Team
