@@ -2,7 +2,6 @@ import { MapPin, Phone, Mail, Linkedin, Users, Target, Award, Globe } from "luci
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
-import ThemeAwareCursorEffects from "@/components/ThemeAwareCursorEffects";
 
 export default function About() {
   const teamMembers = [
@@ -88,7 +87,6 @@ export default function About() {
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-qulas-blue via-purple-600 to-qulas-purple text-white py-20 overflow-hidden">
-          <ThemeAwareCursorEffects variant="torch" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ zIndex: 2 }}>
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
