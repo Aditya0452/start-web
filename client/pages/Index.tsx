@@ -1,7 +1,6 @@
 import { ArrowRight, Code, GraduationCap, Users, TrendingUp, BookOpen, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import ThemeAwareCursorEffects from "@/components/ThemeAwareCursorEffects";
 
 export default function Index() {
   const services = [
@@ -47,7 +46,6 @@ export default function Index() {
     <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-qulas-blue via-purple-600 to-qulas-purple">
-        <ThemeAwareCursorEffects variant="liquid" />
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="text-center">
@@ -94,22 +92,22 @@ export default function Index() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-0 shadow-lg">
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-0 shadow-lg bg-white dark:bg-gray-800">
                 <CardHeader className="pb-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-qulas-blue to-qulas-purple rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <service.icon className="h-6 w-6 text-white" />
                   </div>
-                  <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-qulas-blue transition-colors">
+                  <CardTitle className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-qulas-blue transition-colors">
                     {service.title}
                   </CardTitle>
-                  <CardDescription className="text-gray-600 leading-relaxed">
+                  <CardDescription className="text-gray-600 dark:text-gray-300 leading-relaxed">
                     {service.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-gray-500">
+                      <li key={featureIndex} className="flex items-center text-sm text-gray-500 dark:text-gray-400">
                         <div className="w-1.5 h-1.5 bg-qulas-blue rounded-full mr-3"></div>
                         {feature}
                       </li>
