@@ -1,7 +1,7 @@
 import { ArrowRight, Code, GraduationCap, Users, TrendingUp, BookOpen, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import CursorEffects from "@/components/CursorEffects";
+import ThemeAwareCursorEffects from "@/components/ThemeAwareCursorEffects";
 
 export default function Index() {
   const services = [
@@ -47,7 +47,7 @@ export default function Index() {
     <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-qulas-blue via-purple-600 to-qulas-purple">
-        <CursorEffects variant="liquid" isDark={false} />
+        <ThemeAwareCursorEffects variant="liquid" />
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="text-center">
