@@ -43,7 +43,7 @@ export default function Signup() {
   return (
     <>
       <Navigation />
-      <div className="relative min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center px-4 py-12 overflow-hidden">
+      <div className="relative min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center px-4 py-12 overflow-hidden">
         <CursorEffects variant="abstract" isDark={false} />
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
