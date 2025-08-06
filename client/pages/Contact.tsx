@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
+import CursorEffects from "@/components/CursorEffects";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -91,8 +92,9 @@ export default function Contact() {
       <Navigation />
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-qulas-blue via-purple-600 to-qulas-purple text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section className="relative bg-gradient-to-br from-qulas-blue via-purple-600 to-qulas-purple text-white py-20 overflow-hidden">
+          <CursorEffects variant="liquid" isDark={true} />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" style={{ zIndex: 2 }}>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Get In Touch
             </h1>
