@@ -7,7 +7,6 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Navigation from "@/components/Navigation";
-import ThemeAwareCursorEffects from "@/components/ThemeAwareCursorEffects";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -38,7 +37,6 @@ export default function Login() {
     <>
       <Navigation />
       <div className="relative min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center px-4 py-12 overflow-hidden">
-        <ThemeAwareCursorEffects variant="liquid" />
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <div className="w-16 h-16 bg-gradient-to-r from-qulas-blue to-qulas-purple rounded-full flex items-center justify-center mx-auto mb-4">
