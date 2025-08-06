@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/Navigation";
-import ThemeAwareCursorEffects from "@/components/ThemeAwareCursorEffects";
 
 export default function Services() {
   const services = [
@@ -121,7 +120,6 @@ export default function Services() {
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-qulas-blue via-purple-600 to-qulas-purple text-white py-20 overflow-hidden">
-          <ThemeAwareCursorEffects variant="abstract" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" style={{ zIndex: 2 }}>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Our Comprehensive Services
