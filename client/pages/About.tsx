@@ -88,7 +88,7 @@ export default function About() {
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-qulas-blue via-purple-600 to-qulas-purple text-white py-20 overflow-hidden">
-          <CursorEffects variant="torch" isDark={true} />
+          <CursorEffects variant="torch" isDark={false} />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ zIndex: 2 }}>
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
