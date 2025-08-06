@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,9 +19,9 @@ export default function Navigation() {
   const getLinkClassName = (path: string) => {
     const baseClasses = "transition-all duration-300 font-medium relative";
     if (isActive(path)) {
-      return `${baseClasses} text-qulas-blue font-semibold`;
+      return `${baseClasses} text-qulas-blue dark:text-qulas-blue font-semibold`;
     }
-    return `${baseClasses} text-gray-700 hover:text-qulas-blue`;
+    return `${baseClasses} text-gray-700 dark:text-gray-300 hover:text-qulas-blue dark:hover:text-qulas-blue`;
   };
 
   const ActiveIndicator = ({ path }: { path: string }) => {
@@ -31,7 +32,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+    <nav className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -68,12 +69,13 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Auth Buttons */}
+          {/* Theme Toggle & Auth Buttons */}
           <div className="hidden md:flex items-center space-x-3">
+            <ThemeToggle />
             <Link to="/login">
               <Button 
                 variant="ghost" 
-                className={isActive("/login") ? "text-qulas-blue bg-qulas-blue/10" : "text-gray-700 hover:text-qulas-blue"}
+                className={isActive("/login") ? "text-qulas-blue bg-qulas-blue/10 dark:bg-qulas-blue/20" : "text-gray-700 dark:text-gray-300 hover:text-qulas-blue dark:hover:text-qulas-blue"}
               >
                 Sign In
               </Button>
@@ -91,11 +93,12 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Mobile menu button & theme toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <button
               onClick={toggleMenu}
-              className="text-gray-700 hover:text-qulas-blue transition-colors"
+              className="text-gray-700 dark:text-gray-300 hover:text-qulas-blue transition-colors"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -104,39 +107,39 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
+          <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm">
             <div className="flex flex-col space-y-4">
               <Link
                 to="/"
-                className={`${getLinkClassName("/")} ${isActive("/") ? "bg-qulas-blue/10 px-3 py-2 rounded-lg" : ""}`}
+                className={`${getLinkClassName("/")} ${isActive("/") ? "bg-qulas-blue/10 dark:bg-qulas-blue/20 px-3 py-2 rounded-lg" : ""}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link
                 to="/services"
-                className={`${getLinkClassName("/services")} ${isActive("/services") ? "bg-qulas-blue/10 px-3 py-2 rounded-lg" : ""}`}
+                className={`${getLinkClassName("/services")} ${isActive("/services") ? "bg-qulas-blue/10 dark:bg-qulas-blue/20 px-3 py-2 rounded-lg" : ""}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Services
               </Link>
               <Link
                 to="/about"
-                className={`${getLinkClassName("/about")} ${isActive("/about") ? "bg-qulas-blue/10 px-3 py-2 rounded-lg" : ""}`}
+                className={`${getLinkClassName("/about")} ${isActive("/about") ? "bg-qulas-blue/10 dark:bg-qulas-blue/20 px-3 py-2 rounded-lg" : ""}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
               </Link>
               <Link
                 to="/careers"
-                className={`${getLinkClassName("/careers")} ${isActive("/careers") ? "bg-qulas-blue/10 px-3 py-2 rounded-lg" : ""}`}
+                className={`${getLinkClassName("/careers")} ${isActive("/careers") ? "bg-qulas-blue/10 dark:bg-qulas-blue/20 px-3 py-2 rounded-lg" : ""}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Careers
               </Link>
               <Link
                 to="/contact"
-                className={`${getLinkClassName("/contact")} ${isActive("/contact") ? "bg-qulas-blue/10 px-3 py-2 rounded-lg" : ""}`}
+                className={`${getLinkClassName("/contact")} ${isActive("/contact") ? "bg-qulas-blue/10 dark:bg-qulas-blue/20 px-3 py-2 rounded-lg" : ""}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
@@ -145,7 +148,7 @@ export default function Navigation() {
                 <Link to="/login" onClick={() => setIsMenuOpen(false)}>
                   <Button 
                     variant={isActive("/login") ? "default" : "outline"}
-                    className={isActive("/login") ? "w-full bg-qulas-blue text-white" : "w-full"}
+                    className={isActive("/login") ? "w-full bg-qulas-blue text-white" : "w-full dark:border-gray-600 dark:hover:bg-gray-800"}
                   >
                     Sign In
                   </Button>
