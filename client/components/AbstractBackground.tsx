@@ -18,10 +18,10 @@ interface Particle {
   angleSpeed: number;
 }
 
-export default function AbstractBackground({ 
-  variant = "particles", 
+export default function AbstractBackground({
+  variant = "particles",
   intensity = "medium",
-  className = "" 
+  className = "",
 }: AbstractBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
@@ -96,7 +96,11 @@ export default function AbstractBackground({
   );
 }
 
-function drawParticles(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement, particles: Particle[]) {
+function drawParticles(
+  ctx: CanvasRenderingContext2D,
+  canvas: HTMLCanvasElement,
+  particles: Particle[],
+) {
   const time = Date.now() * 0.001;
 
   particles.forEach((particle, index) => {
@@ -125,11 +129,11 @@ function drawParticles(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement,
     // Connect nearby particles
     particles.forEach((otherParticle, otherIndex) => {
       if (index === otherIndex) return;
-      
+
       const dx = particle.x - otherParticle.x;
       const dy = particle.y - otherParticle.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
-      
+
       if (distance < 150) {
         ctx.globalAlpha = (1 - distance / 150) * 0.1;
         ctx.strokeStyle = particle.color;
@@ -145,18 +149,19 @@ function drawParticles(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement,
 
 function drawWaves(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
   const time = Date.now() * 0.002;
-  
+
   for (let i = 0; i < 3; i++) {
     ctx.globalAlpha = 0.1 - i * 0.03;
     ctx.strokeStyle = `hsl(${224 + i * 20}, 70%, 60%)`;
     ctx.lineWidth = 2;
     ctx.beginPath();
-    
+
     for (let x = 0; x <= canvas.width; x += 10) {
-      const y = canvas.height / 2 + 
-                Math.sin((x + time * 100) * 0.01 + i) * 50 +
-                Math.sin((x + time * 50) * 0.02 + i) * 25;
-      
+      const y =
+        canvas.height / 2 +
+        Math.sin((x + time * 100) * 0.01 + i) * 50 +
+        Math.sin((x + time * 50) * 0.02 + i) * 25;
+
       if (x === 0) {
         ctx.moveTo(x, y);
       } else {
@@ -167,7 +172,11 @@ function drawWaves(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
   }
 }
 
-function drawGeometric(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement, shapes: Particle[]) {
+function drawGeometric(
+  ctx: CanvasRenderingContext2D,
+  canvas: HTMLCanvasElement,
+  shapes: Particle[],
+) {
   const time = Date.now() * 0.001;
 
   shapes.forEach((shape, index) => {
@@ -199,7 +208,7 @@ function drawGeometric(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement,
       ctx.stroke();
     } else if (index % 3 === 1) {
       // Square
-      ctx.strokeRect(-shape.size/2, -shape.size/2, shape.size, shape.size);
+      ctx.strokeRect(-shape.size / 2, -shape.size / 2, shape.size, shape.size);
     } else {
       // Circle
       ctx.beginPath();
@@ -214,13 +223,13 @@ function drawGeometric(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement,
 function drawDots(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
   const time = Date.now() * 0.003;
   const spacing = 50;
-  
+
   for (let x = 0; x < canvas.width; x += spacing) {
     for (let y = 0; y < canvas.height; y += spacing) {
       const wave = Math.sin(time + x * 0.01 + y * 0.01) * 0.5 + 0.5;
       const size = wave * 3 + 1;
       const opacity = wave * 0.3 + 0.1;
-      
+
       ctx.globalAlpha = opacity;
       ctx.fillStyle = `hsl(${224 + wave * 56}, 70%, 60%)`;
       ctx.beginPath();

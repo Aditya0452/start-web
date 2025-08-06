@@ -73,18 +73,22 @@ export default function Navigation() {
           <div className="hidden md:flex items-center space-x-3">
             <ThemeToggle />
             <Link to="/login">
-              <Button 
-                variant="ghost" 
-                className={isActive("/login") ? "text-qulas-blue bg-qulas-blue/10 dark:bg-qulas-blue/20" : "text-gray-700 dark:text-gray-300 hover:text-qulas-blue dark:hover:text-qulas-blue"}
+              <Button
+                variant="ghost"
+                className={
+                  isActive("/login")
+                    ? "text-qulas-blue bg-qulas-blue/10 dark:bg-qulas-blue/20"
+                    : "text-gray-700 dark:text-gray-300 hover:text-qulas-blue dark:hover:text-qulas-blue"
+                }
               >
                 Sign In
               </Button>
             </Link>
             <Link to="/signup">
-              <Button 
+              <Button
                 className={
-                  isActive("/signup") 
-                    ? "bg-gradient-to-r from-qulas-blue-dark to-qulas-purple-dark text-white" 
+                  isActive("/signup")
+                    ? "bg-gradient-to-r from-qulas-blue-dark to-qulas-purple-dark text-white"
                     : "bg-gradient-to-r from-qulas-blue to-qulas-purple hover:from-qulas-blue-dark hover:to-qulas-purple-dark text-white"
                 }
               >
@@ -146,18 +150,22 @@ export default function Navigation() {
               </Link>
               <div className="flex flex-col space-y-2 mt-4">
                 <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-                  <Button 
+                  <Button
                     variant={isActive("/login") ? "default" : "outline"}
-                    className={isActive("/login") ? "w-full bg-qulas-blue text-white" : "w-full dark:border-gray-600 dark:hover:bg-gray-800"}
+                    className={
+                      isActive("/login")
+                        ? "w-full bg-qulas-blue text-white"
+                        : "w-full dark:border-gray-600 dark:hover:bg-gray-800"
+                    }
                   >
                     Sign In
                   </Button>
                 </Link>
                 <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
-                  <Button 
+                  <Button
                     className={
-                      isActive("/signup") 
-                        ? "bg-gradient-to-r from-qulas-blue-dark to-qulas-purple-dark text-white w-full" 
+                      isActive("/signup")
+                        ? "bg-gradient-to-r from-qulas-blue-dark to-qulas-purple-dark text-white w-full"
                         : "bg-gradient-to-r from-qulas-blue to-qulas-purple hover:from-qulas-blue-dark hover:to-qulas-purple-dark text-white w-full"
                     }
                   >

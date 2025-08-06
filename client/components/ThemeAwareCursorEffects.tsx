@@ -6,10 +6,12 @@ interface ThemeAwareCursorEffectsProps {
   variant?: "liquid" | "abstract" | "torch";
 }
 
-export default function ThemeAwareCursorEffects({ variant = "liquid" }: ThemeAwareCursorEffectsProps) {
+export default function ThemeAwareCursorEffects({
+  variant = "liquid",
+}: ThemeAwareCursorEffectsProps) {
   const { theme } = useTheme();
   const [isDark, setIsDark] = useState(false);
-  
+
   useEffect(() => {
     // Determine if we're in dark mode
     const checkDarkMode = () => {
@@ -33,11 +35,11 @@ export default function ThemeAwareCursorEffects({ variant = "liquid" }: ThemeAwa
     };
 
     mediaQuery.addEventListener("change", handleChange);
-    
+
     return () => {
       mediaQuery.removeEventListener("change", handleChange);
     };
   }, [theme]);
-  
+
   return <CursorEffects variant={variant} isDark={isDark} />;
 }
