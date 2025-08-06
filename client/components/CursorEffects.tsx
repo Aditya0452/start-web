@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 interface CursorEffectsProps {
   variant?: "liquid" | "abstract" | "torch";
@@ -7,8 +7,7 @@ interface CursorEffectsProps {
 
 export default function CursorEffects({ variant = "liquid", isDark = false }: CursorEffectsProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [particles, setParticles] = useState<any[]>([]);
+  const mousePositionRef = useRef({ x: 0, y: 0 });
   const animationRef = useRef<number>();
 
   useEffect(() => {
@@ -25,15 +24,36 @@ export default function CursorEffects({ variant = "liquid", isDark = false }: Cu
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
-      setMousePosition({
+      mousePositionRef.current = {
         x: e.clientX - rect.left,
         y: e.clientY - rect.top,
-      });
+      };
+    };
+
+    const animate = () => {
+      if (!canvas || !ctx) return;
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const mouse = mousePositionRef.current;
+
+      if (variant === "liquid") {
+        drawLiquidEffect(ctx, mouse, canvas.width, canvas.height, isDark);
+      } else if (variant === "abstract") {
+        drawAbstractEffect(ctx, mouse, canvas.width, canvas.height, isDark);
+      } else if (variant === "torch") {
+        drawTorchEffect(ctx, mouse, canvas.width, canvas.height, isDark);
+      }
+
+      animationRef.current = requestAnimationFrame(animate);
     };
 
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
     canvas.addEventListener("mousemove", handleMouseMove);
+    
+    // Start animation
+    animate();
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
@@ -42,37 +62,7 @@ export default function CursorEffects({ variant = "liquid", isDark = false }: Cu
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, []);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      if (variant === "liquid") {
-        drawLiquidEffect(ctx, mousePosition, canvas.width, canvas.height, isDark);
-      } else if (variant === "abstract") {
-        drawAbstractEffect(ctx, mousePosition, canvas.width, canvas.height, isDark);
-      } else if (variant === "torch") {
-        drawTorchEffect(ctx, mousePosition, canvas.width, canvas.height, isDark);
-      }
-
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [mousePosition, variant, isDark]);
+  }, [variant, isDark]);
 
   return (
     <canvas
